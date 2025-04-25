@@ -1,0 +1,81 @@
+\chapter{iaed25 -\/ project}
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{iaed25 -\/ project@{iaed25 -\/ project}}
+\label{md__r_e_a_d_m_e_autotoc_md34}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md34}%
+
+
+Este repositório git pertence a ist1113656 e destina-\/se ao project de iaed25.
+
+O enunciado do projecto está disponível em \doxysectlink{md_enunciado}{enunciado.md}{0}.
+
+Os alunos devem submeter aqui a sua solução para o project que será avaliada automaticamente.
+
+O resultado da avaliação do projecto ficará disponível no \href{https://gitlab.rnl.tecnico.ulisboa.pt/iaed/iaed25/feedback/project/ist1113656/-/tree/master/README.md}{\texttt{ README}} do repositório de feedback após cada submissão de código.\hypertarget{md__r_e_a_d_m_e_autotoc_md35}{}\doxysection{\texorpdfstring{Data de entrega\+: 01 de abril 2024, às 19h59}{Data de entrega\+: 01 de abril 2024, às 19h59}}\label{md__r_e_a_d_m_e_autotoc_md35}
+O desempenho global dos alunos no project pode ser consultado no \href{https://gitlab.rnl.tecnico.ulisboa.pt/iaed/iaed25/iaed25/-/tree/master/dashboard/projects/project.md}{\texttt{ {\itshape dashboard}}} do projecto, presente no repositório global de iaed25.
+
+Informações detalhadas sobre depuração de programas estão disponíveis em \doxysectlink{md_debugging}{debugging.md}{0}.
+
+Outras guidelines podem ser encontradas em \doxysectlink{md_guidelines}{guidelines.md}{0}.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Notas importantes\+:}}
+\begin{DoxyItemize}
+\item \mbox{[}+Os alunos têm de esperar 10 minuto(s) entre submissões+\mbox{]}. Desta forma, têm de esperar 10 minuto(s) para resubmeter um novo programa. Caso contrário a submissão do aluno não será avaliada.
+\item \mbox{[}-\/Os alunos não podem alterar o ficheiro .gitlab-\/ci.\+yml presente no repositorio. A alteração deste ficheiro fará com que o aluno fique sem acesso a este repositório, não existirão excepções. Desta forma o aluno será avaliado com 0 valores nesta componente de avaliação-\/\mbox{]}
+\end{DoxyItemize}
+\item Processo de compilação usando o gcc (versão 12.\+3.\+0) \+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{gcc\ -\/O3\ -\/Wall\ -\/Wextra\ -\/Werror\ -\/Wno-\/unused-\/result\ -\/o\ proj\ *.c}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item Após compilar o seu projeto, para correr os testes públicos, deve descompactar e entrar na directoria dos testes\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{unzip\ public-\/tests.zip}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ public-\/tests}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item Para correr todos os testes públicos através da Makefile disponibilizada, deve correr o seguinte comando dentro da directoria public-\/tests\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item Resultados de avaliação mais comuns para cada teste de avaliação\+:
+\begin{DoxyItemize}
+\item {\itshape Accepted} \+: O resultado do programa é igual ao esperado.
+\item {\itshape Wrong Answer} \+: O resultado do programa é diferente do esperado.
+\item {\itshape Presentation Error} \+: O resultado do programa difere do esperado em espaços em branco ou linhas em branco.
+\item {\itshape Compile Time Error} \+: Ocorreu um erro de compilação durante a compilação do programa.
+\item {\itshape Time Limit Exceeded} \+: O tempo de execução do programa programa excedeu o tempo permitido.
+\item {\itshape Memory Limit Exceeded} \+: A memória de execução do programa excedeu a memória permitida.
+\item {\itshape Output Limit Exceeded} \+: O output de execução do programa excedeu o espaço permitido.
+\item Outros \+: Ocorreu um erro durante a execução do programa que levou à paragem inesperada do mesmo. 
+\end{DoxyItemize}
+\end{DoxyItemize}
