@@ -1,5 +1,5 @@
 # Vaccine-management-system
-""""A first year Portuguese university project, for the course of introduction to algorithms and data structures utilising the C language""""
+""""A first year Portuguese university (Instituto Superior Técnico) project, for the course of introduction to algorithms and data structures utilising the C language""""
 
 1. Introdução
 Pretende-se a construção de um sistema de gestão de vacinas e suas inoculações. Para tal, o seu sistema deverá permitir a introdução de doses de vacinas e a gestão das suas aplicações.
