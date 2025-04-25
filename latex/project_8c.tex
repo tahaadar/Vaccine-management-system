@@ -1,0 +1,775 @@
+\doxysection{project.\+c File Reference}
+\hypertarget{project_8c}{}\label{project_8c}\index{project.c@{project.c}}
+
+
+Main implementation file for the vaccine management system.  
+
+
+{\ttfamily \#include "{}vacina.\+h"{}}\newline
+{\ttfamily \#include "{}user.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{project_8c_ab84a706d3d62f5a1469f21afcd32331a}{NOME\+\_\+\+LOTE\+\_\+\+MAX}}~21
+\item 
+\#define \mbox{\hyperlink{project_8c_a258ef1ace6e555992cf5b18805ebc63f}{NOME\+\_\+\+VACINA\+\_\+\+MAX}}~51
+\item 
+\#define \mbox{\hyperlink{project_8c_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\+\_\+\+SIZE}}~65535
+\item 
+\#define \mbox{\hyperlink{project_8c_aa8dd9e9ed99b636ce515ad31912e86d0}{MAX\+\_\+\+LOTES}}~1000
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{project_8c_a7623f2ac1b8db1ef9e5d7faabe707b08}{lista\+\_\+vacina\+\_\+eh\+\_\+cheio}} (\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}lista\+\_\+vacina)
+\begin{DoxyCompactList}\small\item\em Checks if the vaccine batch list has reached maximum capacity. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{project_8c_acee86cdd7a56dc30d3e932c471ef3e5b}{lote\+\_\+existe}} (char \texorpdfstring{$\ast$}{*}lote, \mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}lista\+\_\+vacina)
+\begin{DoxyCompactList}\small\item\em Verifies if a batch with the given ID already exists. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{project_8c_a51eca1bc94c48093060a9b89a2845c17}{eh\+\_\+lote\+\_\+valido}} (char \texorpdfstring{$\ast$}{*}lote)
+\begin{DoxyCompactList}\small\item\em Validates batch ID format (uppercase hex digits) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{project_8c_ab78c342e3b85367b7db5951940eb7a39}{eh\+\_\+nome\+\_\+valido}} (char \texorpdfstring{$\ast$}{*}nome)
+\begin{DoxyCompactList}\small\item\em Checks if vaccine name follows the required format. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{project_8c_ad786a3408817939deda89eff46afb305}{eh\+\_\+data\+\_\+valido}} (int \texorpdfstring{$\ast$}{*}dia, int \texorpdfstring{$\ast$}{*}mes, int \texorpdfstring{$\ast$}{*}ano, int \texorpdfstring{$\ast$}{*}dia\+\_\+sistema, int \texorpdfstring{$\ast$}{*}mes\+\_\+sistema, int \texorpdfstring{$\ast$}{*}ano\+\_\+sistema)
+\begin{DoxyCompactList}\small\item\em Validates a date against system date. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_af877093767d62953ca895e0e0baca607}{obter\+\_\+dados\+\_\+lote}} (\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}lista\+\_\+vacinas, char \texorpdfstring{$\ast$}{*}lote, int \texorpdfstring{$\ast$}{*}dia, int \texorpdfstring{$\ast$}{*}mes, int \texorpdfstring{$\ast$}{*}ano, int dia\+\_\+atual, int mes\+\_\+atual, int ano\+\_\+atual, int \texorpdfstring{$\ast$}{*}num\+\_\+dosas, char \texorpdfstring{$\ast$}{*}noma\+\_\+vacina, int use\+\_\+portugues)
+\begin{DoxyCompactList}\small\item\em Processes user input to create a new vaccine batch. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_ac85aa93d9d8d50924276d0ec905f2546}{listar\+\_\+vacinas}} (\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}lista\+\_\+vacina, int use\+\_\+portuguese)
+\begin{DoxyCompactList}\small\item\em Lists vaccine batches based on user input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a4b11a81b2da062582bbb00169ccab675}{aplicar\+\_\+dose\+\_\+vacina}} (\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}lista\+\_\+vacina, \mbox{\hyperlink{struct_user}{User}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}lista\+\_\+user, \mbox{\hyperlink{struct_hoje_vax_table}{Hoje\+Vax\+Table}} \texorpdfstring{$\ast$}{*}vax\+\_\+table\+\_\+hoje, int dia\+\_\+atual, int mes\+\_\+atual, int ano\+\_\+atual, int use\+\_\+portuguese)
+\begin{DoxyCompactList}\small\item\em Applies a vaccine dose to a user. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a275bdddf6e98d57f7bf3d05e685839d5}{retirar\+\_\+disponibilidade}} (\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}lista\+\_\+vacina, \mbox{\hyperlink{struct_user}{User}} \texorpdfstring{$\ast$}{*}lista\+\_\+user, int use\+\_\+portuguese)
+\begin{DoxyCompactList}\small\item\em Removes availability of a specified batch. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_aef767d4fe07a4649a885f8e6dc2b944c}{avancar\+\_\+tempo}} (int \texorpdfstring{$\ast$}{*}dia\+\_\+sistema, int \texorpdfstring{$\ast$}{*}mes\+\_\+sistema, int \texorpdfstring{$\ast$}{*}ano\+\_\+sistema, \mbox{\hyperlink{struct_hoje_vax_table}{Hoje\+Vax\+Table}} \texorpdfstring{$\ast$}{*}vax\+\_\+table\+\_\+hoje, int use\+\_\+portuguese)
+\begin{DoxyCompactList}\small\item\em Advances system time. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a2a01c4fc51e81c1331da122cdd51cc97}{apagar\+\_\+aplicacoes}} (\mbox{\hyperlink{struct_user}{User}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}lista\+\_\+user, \mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}lista\+\_\+vacina, int dia\+\_\+atual, int mes\+\_\+atual, int ano\+\_\+atual, int use\+\_\+portuguese)
+\begin{DoxyCompactList}\small\item\em Deletes vaccination records based on criteria. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a13f762cea864a4bbccde80a5f09e1e23}{listar\+\_\+aplicacoes}} (\mbox{\hyperlink{struct_user}{User}} \texorpdfstring{$\ast$}{*}lista\+\_\+user, int use\+\_\+portuguese)
+\begin{DoxyCompactList}\small\item\em Lists vaccination applications. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{project_8c_ae00cb020530ccc5191b478f76860363f}{main}} (int argumento\+\_\+num, char \texorpdfstring{$\ast$}{*}argumento\+\_\+val\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Program entry point. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{project_8c_aed3cb20cbf0d4803c4f8c6096325640e}{conta\+\_\+lote}} (\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}lista\+\_\+vacina)
+\begin{DoxyCompactList}\small\item\em Counts total number of batches in list. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{project_8c_a9a7d0ac2bfd204419e6a27204ca6df87}{comparar\+\_\+lotes}} (\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}lote\+\_\+a, \mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}lote\+\_\+b)
+\begin{DoxyCompactList}\small\item\em Compares two batches for sorting. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_abc2cc1b8a14bb812a90108cca63f7ffa}{mergelotes}} (\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}array\+\_\+lotes, int e, int m, int d)
+\begin{DoxyCompactList}\small\item\em Merge step of mergesort for batch sorting. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a3ab5a9a6e53cbe3eeb7b13c1c3cb8c62}{merge\+Sort}} (\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}array\+\_\+lote, int e, int d)
+\begin{DoxyCompactList}\small\item\em Sorts batches using merge sort algorithm. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{project_8c_aa9b14f50bc7ebda073134904874512df}{obter\+\_\+dados\+\_\+aplicacao}} (char \texorpdfstring{$\ast$}{*}nome\+\_\+usuario, char \texorpdfstring{$\ast$}{*}nome\+\_\+vacina)
+\begin{DoxyCompactList}\small\item\em Parses user input for vaccine application. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{project_8c_aa31e30b12b400513742be5cd046fe1bc}{encontrar\+\_\+lote\+\_\+mais\+\_\+antigo}} (\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}lista\+\_\+vacina, char \texorpdfstring{$\ast$}{*}nome\+\_\+vacina, int dia\+\_\+atual, int mes\+\_\+atual, int ano\+\_\+atual)
+\begin{DoxyCompactList}\small\item\em Finds oldest valid batch of a specific vaccine. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{project_8c_a209eeb2673108e5272cfe933ee64a152}{obter\+\_\+dados\+\_\+retirada}} (char \texorpdfstring{$\ast$}{*}lote)
+\begin{DoxyCompactList}\small\item\em Gets batch ID from user input for removal. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{project_8c_a0ba93a36f3516d96356cdac1e6304975}{contar\+\_\+aplicacoes\+\_\+lote}} (\mbox{\hyperlink{struct_user}{User}} \texorpdfstring{$\ast$}{*}lista\+\_\+user, char \texorpdfstring{$\ast$}{*}lote, \mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}lista\+\_\+vacina)
+\begin{DoxyCompactList}\small\item\em Counts applications from a specific batch. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_ae08fe510278be3e3e37be375f0976a13}{remover\+\_\+lote}} (\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}lista\+\_\+vacina, char \texorpdfstring{$\ast$}{*}lote)
+\begin{DoxyCompactList}\small\item\em Removes a batch from the list. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{project_8c_a416ed9ceb8fa3af4be555fdd82febe9f}{obter\+\_\+dados\+\_\+avanco\+\_\+tempo}} (int \texorpdfstring{$\ast$}{*}dia, int \texorpdfstring{$\ast$}{*}mes, int \texorpdfstring{$\ast$}{*}ano)
+\begin{DoxyCompactList}\small\item\em Parses time advancement input from user. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{project_8c_a930cfffb07c674610f0a3865286c4073}{eh\+\_\+data\+\_\+avanco\+\_\+valido}} (int dia, int mes, int ano, int dia\+\_\+atual, int mes\+\_\+atual, int ano\+\_\+atual)
+\begin{DoxyCompactList}\small\item\em Validates date for time advancement. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{project_8c_a6e024ee0c7302bac01209db01843b6dd}{obter\+\_\+dados\+\_\+apagar}} (char \texorpdfstring{$\ast$}{*}nome\+\_\+usuario, int \texorpdfstring{$\ast$}{*}dia, int \texorpdfstring{$\ast$}{*}mes, int \texorpdfstring{$\ast$}{*}ano, char \texorpdfstring{$\ast$}{*}lote)
+\begin{DoxyCompactList}\small\item\em Parses input for deleting vaccination records. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{project_8c_a709c1022d51ee266e830aed9bb11890b}{eh\+\_\+data\+\_\+delecao\+\_\+valida}} (int dia, int mes, int ano, int dia\+\_\+atual, int mes\+\_\+atual, int ano\+\_\+atual)
+\begin{DoxyCompactList}\small\item\em Validates date for deletion operation. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{project_8c_a4e41f4344a9986f4a87ca6d970183433}{apagar\+\_\+registros}} (\mbox{\hyperlink{struct_user}{User}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}lista\+\_\+user, char \texorpdfstring{$\ast$}{*}nome\+\_\+usuario, int dia, int mes, int ano, char \texorpdfstring{$\ast$}{*}lote, \mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}lista\+\_\+vacina)
+\begin{DoxyCompactList}\small\item\em Deletes vaccination records based on criteria. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{project_8c_a683cd967f56c6666b3f96992e2db9cf9}{obter\+\_\+dados\+\_\+listar\+\_\+usuarios}} (char \texorpdfstring{$\ast$}{*}nome\+\_\+usuario)
+\begin{DoxyCompactList}\small\item\em Parses input for listing applications. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{project_8c_ab052973a418b307baa64d95cbc38b5b5}{comparar\+\_\+aplicacoes\+\_\+por\+\_\+data}} (const void \texorpdfstring{$\ast$}{*}a, const void \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Comparison function for sorting applications by date. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a248623eda4c1584df94dd43bbd03526d}{ordenar\+\_\+aplicacoes}} (\mbox{\hyperlink{struct_user}{User}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}array\+\_\+users, int num\+\_\+users)
+\begin{DoxyCompactList}\small\item\em Sorts applications by date using insertion sort. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{project_8c_a9b34d4176a034f0859765359d3d3ab90}{encontrar\+\_\+lote\+\_\+por\+\_\+vacina}} (\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}lista\+\_\+vacina, char \texorpdfstring{$\ast$}{*}nome\+\_\+vacina)
+\begin{DoxyCompactList}\small\item\em Finds batch ID for a vaccine name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main implementation file for the vaccine management system. 
+
+\begin{DoxyAuthor}{Author}
+ist1113656 (Taha Adar Ozsoy) 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{project_8c_a6b20d41d6252e9871430c242cb1a56e7}\index{project.c@{project.c}!BUFFER\_SIZE@{BUFFER\_SIZE}}
+\index{BUFFER\_SIZE@{BUFFER\_SIZE}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE}{BUFFER\_SIZE}}
+{\footnotesize\ttfamily \label{project_8c_a6b20d41d6252e9871430c242cb1a56e7} 
+\#define BUFFER\+\_\+\+SIZE~65535}
+
+Buffer size for reading input lines \Hypertarget{project_8c_aa8dd9e9ed99b636ce515ad31912e86d0}\index{project.c@{project.c}!MAX\_LOTES@{MAX\_LOTES}}
+\index{MAX\_LOTES@{MAX\_LOTES}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_LOTES}{MAX\_LOTES}}
+{\footnotesize\ttfamily \label{project_8c_aa8dd9e9ed99b636ce515ad31912e86d0} 
+\#define MAX\+\_\+\+LOTES~1000}
+
+System limit for number of vaccine batches \Hypertarget{project_8c_ab84a706d3d62f5a1469f21afcd32331a}\index{project.c@{project.c}!NOME\_LOTE\_MAX@{NOME\_LOTE\_MAX}}
+\index{NOME\_LOTE\_MAX@{NOME\_LOTE\_MAX}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{NOME\_LOTE\_MAX}{NOME\_LOTE\_MAX}}
+{\footnotesize\ttfamily \label{project_8c_ab84a706d3d62f5a1469f21afcd32331a} 
+\#define NOME\+\_\+\+LOTE\+\_\+\+MAX~21}
+
+Max length for batch name string incl. null byte \Hypertarget{project_8c_a258ef1ace6e555992cf5b18805ebc63f}\index{project.c@{project.c}!NOME\_VACINA\_MAX@{NOME\_VACINA\_MAX}}
+\index{NOME\_VACINA\_MAX@{NOME\_VACINA\_MAX}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{NOME\_VACINA\_MAX}{NOME\_VACINA\_MAX}}
+{\footnotesize\ttfamily \label{project_8c_a258ef1ace6e555992cf5b18805ebc63f} 
+\#define NOME\+\_\+\+VACINA\+\_\+\+MAX~51}
+
+Max length for vaccine name string incl. null byte 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{project_8c_a2a01c4fc51e81c1331da122cdd51cc97}\index{project.c@{project.c}!apagar\_aplicacoes@{apagar\_aplicacoes}}
+\index{apagar\_aplicacoes@{apagar\_aplicacoes}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{apagar\_aplicacoes()}{apagar\_aplicacoes()}}
+{\footnotesize\ttfamily \label{project_8c_a2a01c4fc51e81c1331da122cdd51cc97} 
+void apagar\+\_\+aplicacoes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_user}{User}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{lista\+\_\+user}{, }\item[{\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}}]{lista\+\_\+vacina}{, }\item[{int}]{dia\+\_\+atual}{, }\item[{int}]{mes\+\_\+atual}{, }\item[{int}]{ano\+\_\+atual}{, }\item[{int}]{use\+\_\+portuguese}{}\end{DoxyParamCaption})}
+
+
+
+Deletes vaccination records based on criteria. 
+
+Handles deletion of vaccination records.
+
+Can delete by user, date, and/or batch
+
+Main function that processes input and calls helper functions \Hypertarget{project_8c_a4e41f4344a9986f4a87ca6d970183433}\index{project.c@{project.c}!apagar\_registros@{apagar\_registros}}
+\index{apagar\_registros@{apagar\_registros}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{apagar\_registros()}{apagar\_registros()}}
+{\footnotesize\ttfamily \label{project_8c_a4e41f4344a9986f4a87ca6d970183433} 
+int apagar\+\_\+registros (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_user}{User}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{lista\+\_\+user}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{nome\+\_\+usuario}{, }\item[{int}]{dia}{, }\item[{int}]{mes}{, }\item[{int}]{ano}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{lote}{, }\item[{\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}}]{lista\+\_\+vacina}{}\end{DoxyParamCaption})}
+
+
+
+Deletes vaccination records based on criteria. 
+
+Helper function that does the actual deletion work
+
+
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+user} & Pointer to head pointer of user list \\
+\hline
+{\em nome\+\_\+usuario} & Username to filter by \\
+\hline
+{\em dia} & Day to filter by (0 for any day) \\
+\hline
+{\em mes} & Month to filter by (0 for any month) \\
+\hline
+{\em ano} & Year to filter by (0 for any year) \\
+\hline
+{\em lote} & Batch ID to filter by (empty for any batch) \\
+\hline
+{\em lista\+\_\+vacina} & Batch list (needed to lookup vaccine names) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of records deleted 
+\end{DoxyReturn}
+\Hypertarget{project_8c_a4b11a81b2da062582bbb00169ccab675}\index{project.c@{project.c}!aplicar\_dose\_vacina@{aplicar\_dose\_vacina}}
+\index{aplicar\_dose\_vacina@{aplicar\_dose\_vacina}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{aplicar\_dose\_vacina()}{aplicar\_dose\_vacina()}}
+{\footnotesize\ttfamily \label{project_8c_a4b11a81b2da062582bbb00169ccab675} 
+void aplicar\+\_\+dose\+\_\+vacina (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}}]{lista\+\_\+vacina}{, }\item[{\mbox{\hyperlink{struct_user}{User}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{lista\+\_\+user}{, }\item[{\mbox{\hyperlink{struct_hoje_vax_table}{Hoje\+Vax\+Table}} \texorpdfstring{$\ast$}{*}}]{vax\+\_\+table\+\_\+hoje}{, }\item[{int}]{dia\+\_\+atual}{, }\item[{int}]{mes\+\_\+atual}{, }\item[{int}]{ano\+\_\+atual}{, }\item[{int}]{use\+\_\+portuguese}{}\end{DoxyParamCaption})}
+
+
+
+Applies a vaccine dose to a user. 
+
+Selects the oldest valid batch and records application
+
+Finds oldest valid batch and records application. Handles validation and error cases. \Hypertarget{project_8c_aef767d4fe07a4649a885f8e6dc2b944c}\index{project.c@{project.c}!avancar\_tempo@{avancar\_tempo}}
+\index{avancar\_tempo@{avancar\_tempo}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{avancar\_tempo()}{avancar\_tempo()}}
+{\footnotesize\ttfamily \label{project_8c_aef767d4fe07a4649a885f8e6dc2b944c} 
+void avancar\+\_\+tempo (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{dia\+\_\+sistema}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{mes\+\_\+sistema}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{ano\+\_\+sistema}{, }\item[{\mbox{\hyperlink{struct_hoje_vax_table}{Hoje\+Vax\+Table}} \texorpdfstring{$\ast$}{*}}]{vax\+\_\+table\+\_\+hoje}{, }\item[{int}]{use\+\_\+portuguese}{}\end{DoxyParamCaption})}
+
+
+
+Advances system time. 
+
+Advances or displays system time.
+
+Updates the current date and refreshes the daily vaccination table
+
+Can show current date or set a new future date \Hypertarget{project_8c_ab052973a418b307baa64d95cbc38b5b5}\index{project.c@{project.c}!comparar\_aplicacoes\_por\_data@{comparar\_aplicacoes\_por\_data}}
+\index{comparar\_aplicacoes\_por\_data@{comparar\_aplicacoes\_por\_data}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{comparar\_aplicacoes\_por\_data()}{comparar\_aplicacoes\_por\_data()}}
+{\footnotesize\ttfamily \label{project_8c_ab052973a418b307baa64d95cbc38b5b5} 
+int comparar\+\_\+aplicacoes\+\_\+por\+\_\+data (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Comparison function for sorting applications by date. 
+
+Used for sorting applications chronologically
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Pointer to first \doxylink{struct_user}{User} pointer \\
+\hline
+{\em b} & Pointer to second \doxylink{struct_user}{User} pointer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Negative if a$<$b, positive if a$>$b, 0 if equal 
+\end{DoxyReturn}
+\Hypertarget{project_8c_a9a7d0ac2bfd204419e6a27204ca6df87}\index{project.c@{project.c}!comparar\_lotes@{comparar\_lotes}}
+\index{comparar\_lotes@{comparar\_lotes}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{comparar\_lotes()}{comparar\_lotes()}}
+{\footnotesize\ttfamily \label{project_8c_a9a7d0ac2bfd204419e6a27204ca6df87} 
+int comparar\+\_\+lotes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}}]{lote\+\_\+a}{, }\item[{\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}}]{lote\+\_\+b}{}\end{DoxyParamCaption})}
+
+
+
+Compares two batches for sorting. 
+
+First by expiration date, then alphabetically by batch ID
+
+
+\begin{DoxyParams}{Parameters}
+{\em lote\+\_\+a} & First batch \\
+\hline
+{\em lote\+\_\+b} & Second batch \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Negative if a$<$b, positive if a$>$b, 0 if equal 
+\end{DoxyReturn}
+\Hypertarget{project_8c_aed3cb20cbf0d4803c4f8c6096325640e}\index{project.c@{project.c}!conta\_lote@{conta\_lote}}
+\index{conta\_lote@{conta\_lote}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{conta\_lote()}{conta\_lote()}}
+{\footnotesize\ttfamily \label{project_8c_aed3cb20cbf0d4803c4f8c6096325640e} 
+int conta\+\_\+lote (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}}]{lista\+\_\+vacina}{}\end{DoxyParamCaption})}
+
+
+
+Counts total number of batches in list. 
+
+Used to check against MAX\+\_\+\+LOTES limit
+
+
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+vacina} & Head of batch list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of batches 
+\end{DoxyReturn}
+\Hypertarget{project_8c_a0ba93a36f3516d96356cdac1e6304975}\index{project.c@{project.c}!contar\_aplicacoes\_lote@{contar\_aplicacoes\_lote}}
+\index{contar\_aplicacoes\_lote@{contar\_aplicacoes\_lote}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{contar\_aplicacoes\_lote()}{contar\_aplicacoes\_lote()}}
+{\footnotesize\ttfamily \label{project_8c_a0ba93a36f3516d96356cdac1e6304975} 
+int contar\+\_\+aplicacoes\+\_\+lote (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_user}{User}} \texorpdfstring{$\ast$}{*}}]{lista\+\_\+user}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{lote}{, }\item[{\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}}]{lista\+\_\+vacina}{}\end{DoxyParamCaption})}
+
+
+
+Counts applications from a specific batch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+user} & Head of user list \\
+\hline
+{\em lote} & Batch ID to count \\
+\hline
+{\em lista\+\_\+vacina} & Batch list to find vaccine name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of applications from this batch 
+\end{DoxyReturn}
+\Hypertarget{project_8c_a930cfffb07c674610f0a3865286c4073}\index{project.c@{project.c}!eh\_data\_avanco\_valido@{eh\_data\_avanco\_valido}}
+\index{eh\_data\_avanco\_valido@{eh\_data\_avanco\_valido}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{eh\_data\_avanco\_valido()}{eh\_data\_avanco\_valido()}}
+{\footnotesize\ttfamily \label{project_8c_a930cfffb07c674610f0a3865286c4073} 
+int eh\+\_\+data\+\_\+avanco\+\_\+valido (\begin{DoxyParamCaption}\item[{int}]{dia}{, }\item[{int}]{mes}{, }\item[{int}]{ano}{, }\item[{int}]{dia\+\_\+atual}{, }\item[{int}]{mes\+\_\+atual}{, }\item[{int}]{ano\+\_\+atual}{}\end{DoxyParamCaption})}
+
+
+
+Validates date for time advancement. 
+
+Makes sure date is valid and not before current system date
+
+
+\begin{DoxyParams}{Parameters}
+{\em dia} & Day to check \\
+\hline
+{\em mes} & Month to check \\
+\hline
+{\em ano} & Year to check \\
+\hline
+{\em dia\+\_\+atual} & Current system day \\
+\hline
+{\em mes\+\_\+atual} & Current system month \\
+\hline
+{\em ano\+\_\+atual} & Current system year \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if valid, 0 otherwise 
+\end{DoxyReturn}
+\Hypertarget{project_8c_a709c1022d51ee266e830aed9bb11890b}\index{project.c@{project.c}!eh\_data\_delecao\_valida@{eh\_data\_delecao\_valida}}
+\index{eh\_data\_delecao\_valida@{eh\_data\_delecao\_valida}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{eh\_data\_delecao\_valida()}{eh\_data\_delecao\_valida()}}
+{\footnotesize\ttfamily \label{project_8c_a709c1022d51ee266e830aed9bb11890b} 
+int eh\+\_\+data\+\_\+delecao\+\_\+valida (\begin{DoxyParamCaption}\item[{int}]{dia}{, }\item[{int}]{mes}{, }\item[{int}]{ano}{, }\item[{int}]{dia\+\_\+atual}{, }\item[{int}]{mes\+\_\+atual}{, }\item[{int}]{ano\+\_\+atual}{}\end{DoxyParamCaption})}
+
+
+
+Validates date for deletion operation. 
+
+Checks that date is valid and not in the future
+
+
+\begin{DoxyParams}{Parameters}
+{\em dia} & Day to check \\
+\hline
+{\em mes} & Month to check \\
+\hline
+{\em ano} & Year to check \\
+\hline
+{\em dia\+\_\+atual} & Current system day \\
+\hline
+{\em mes\+\_\+atual} & Current system month \\
+\hline
+{\em ano\+\_\+atual} & Current system year \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if valid, 0 otherwise 
+\end{DoxyReturn}
+\Hypertarget{project_8c_ad786a3408817939deda89eff46afb305}\index{project.c@{project.c}!eh\_data\_valido@{eh\_data\_valido}}
+\index{eh\_data\_valido@{eh\_data\_valido}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{eh\_data\_valido()}{eh\_data\_valido()}}
+{\footnotesize\ttfamily \label{project_8c_ad786a3408817939deda89eff46afb305} 
+int eh\+\_\+data\+\_\+valido (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{dia}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{mes}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{ano}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{dia\+\_\+sistema}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{mes\+\_\+sistema}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{ano\+\_\+sistema}{}\end{DoxyParamCaption})}
+
+
+
+Validates a date against system date. 
+
+Validates date and checks it\textquotesingle{}s not in the past.
+
+Makes sure the date is valid and not in the past
+
+
+\begin{DoxyParams}{Parameters}
+{\em dia} & Day to check \\
+\hline
+{\em mes} & Month to check \\
+\hline
+{\em ano} & Year to check \\
+\hline
+{\em dia\+\_\+sistema} & Current system day \\
+\hline
+{\em mes\+\_\+sistema} & Current system month \\
+\hline
+{\em ano\+\_\+sistema} & Current system year \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if valid, 0 otherwise
+\end{DoxyReturn}
+Makes sure date is valid (checking month, days, years and leap years) and after system date
+
+\begin{DoxyReturn}{Returns}
+1 if valid, 0 otherwise 
+\end{DoxyReturn}
+\Hypertarget{project_8c_a51eca1bc94c48093060a9b89a2845c17}\index{project.c@{project.c}!eh\_lote\_valido@{eh\_lote\_valido}}
+\index{eh\_lote\_valido@{eh\_lote\_valido}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{eh\_lote\_valido()}{eh\_lote\_valido()}}
+{\footnotesize\ttfamily \label{project_8c_a51eca1bc94c48093060a9b89a2845c17} 
+int eh\+\_\+lote\+\_\+valido (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{lote}{}\end{DoxyParamCaption})}
+
+
+
+Validates batch ID format (uppercase hex digits) 
+
+Validates batch ID format.
+
+Checks that all characters are valid hex digits (0-\/9, A-\/F)
+
+
+\begin{DoxyParams}{Parameters}
+{\em lote} & Batch ID to validate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if valid, 0 otherwise 
+\end{DoxyReturn}
+\Hypertarget{project_8c_ab78c342e3b85367b7db5951940eb7a39}\index{project.c@{project.c}!eh\_nome\_valido@{eh\_nome\_valido}}
+\index{eh\_nome\_valido@{eh\_nome\_valido}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{eh\_nome\_valido()}{eh\_nome\_valido()}}
+{\footnotesize\ttfamily \label{project_8c_ab78c342e3b85367b7db5951940eb7a39} 
+int eh\+\_\+nome\+\_\+valido (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{nome}{}\end{DoxyParamCaption})}
+
+
+
+Checks if vaccine name follows the required format. 
+
+Validates vaccine name format.
+
+Validates that it contains no spaces unless quoted
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome} & Vaccine name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if valid, 0 otherwise
+\end{DoxyReturn}
+Names can\textquotesingle{}t contain whitespace unless quoted
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome} & Name to validate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if valid, 0 otherwise 
+\end{DoxyReturn}
+\Hypertarget{project_8c_aa31e30b12b400513742be5cd046fe1bc}\index{project.c@{project.c}!encontrar\_lote\_mais\_antigo@{encontrar\_lote\_mais\_antigo}}
+\index{encontrar\_lote\_mais\_antigo@{encontrar\_lote\_mais\_antigo}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{encontrar\_lote\_mais\_antigo()}{encontrar\_lote\_mais\_antigo()}}
+{\footnotesize\ttfamily \label{project_8c_aa31e30b12b400513742be5cd046fe1bc} 
+\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*} encontrar\+\_\+lote\+\_\+mais\+\_\+antigo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}}]{lista\+\_\+vacina}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{nome\+\_\+vacina}{, }\item[{int}]{dia\+\_\+atual}{, }\item[{int}]{mes\+\_\+atual}{, }\item[{int}]{ano\+\_\+atual}{}\end{DoxyParamCaption})}
+
+
+
+Finds oldest valid batch of a specific vaccine. 
+
+Returns batch that expires soonest but is still valid. Only considers batches with available doses.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+vacina} & Head of batch list \\
+\hline
+{\em nome\+\_\+vacina} & Name of vaccine to find \\
+\hline
+{\em dia\+\_\+atual} & Current system day \\
+\hline
+{\em mes\+\_\+atual} & Current system month \\
+\hline
+{\em ano\+\_\+atual} & Current system year \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to found batch or NULL if none available 
+\end{DoxyReturn}
+\Hypertarget{project_8c_a9b34d4176a034f0859765359d3d3ab90}\index{project.c@{project.c}!encontrar\_lote\_por\_vacina@{encontrar\_lote\_por\_vacina}}
+\index{encontrar\_lote\_por\_vacina@{encontrar\_lote\_por\_vacina}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{encontrar\_lote\_por\_vacina()}{encontrar\_lote\_por\_vacina()}}
+{\footnotesize\ttfamily \label{project_8c_a9b34d4176a034f0859765359d3d3ab90} 
+char \texorpdfstring{$\ast$}{*} encontrar\+\_\+lote\+\_\+por\+\_\+vacina (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}}]{lista\+\_\+vacina}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{nome\+\_\+vacina}{}\end{DoxyParamCaption})}
+
+
+
+Finds batch ID for a vaccine name. 
+
+Helper function to get batch details
+
+
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+vacina} & Head of vaccine batch list \\
+\hline
+{\em nome\+\_\+vacina} & Name of vaccine to find \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Batch ID or NULL if not found 
+\end{DoxyReturn}
+\Hypertarget{project_8c_a7623f2ac1b8db1ef9e5d7faabe707b08}\index{project.c@{project.c}!lista\_vacina\_eh\_cheio@{lista\_vacina\_eh\_cheio}}
+\index{lista\_vacina\_eh\_cheio@{lista\_vacina\_eh\_cheio}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{lista\_vacina\_eh\_cheio()}{lista\_vacina\_eh\_cheio()}}
+{\footnotesize\ttfamily \label{project_8c_a7623f2ac1b8db1ef9e5d7faabe707b08} 
+int lista\+\_\+vacina\+\_\+eh\+\_\+cheio (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}}]{lista\+\_\+vacina}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the vaccine batch list has reached maximum capacity. 
+
+Checks if batch limit is reached.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+vacina} & Pointer to the first vaccine batch \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if full, 0 otherwise
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+vacina} & Head of batch list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if full, 0 otherwise 
+\end{DoxyReturn}
+\Hypertarget{project_8c_a13f762cea864a4bbccde80a5f09e1e23}\index{project.c@{project.c}!listar\_aplicacoes@{listar\_aplicacoes}}
+\index{listar\_aplicacoes@{listar\_aplicacoes}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{listar\_aplicacoes()}{listar\_aplicacoes()}}
+{\footnotesize\ttfamily \label{project_8c_a13f762cea864a4bbccde80a5f09e1e23} 
+void listar\+\_\+aplicacoes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_user}{User}} \texorpdfstring{$\ast$}{*}}]{lista\+\_\+user}{, }\item[{int}]{use\+\_\+portuguese}{}\end{DoxyParamCaption})}
+
+
+
+Lists vaccination applications. 
+
+Shows all applications or just those for specific user
+
+Lists all applications or only those for a specific user Sorts by date of application \Hypertarget{project_8c_ac85aa93d9d8d50924276d0ec905f2546}\index{project.c@{project.c}!listar\_vacinas@{listar\_vacinas}}
+\index{listar\_vacinas@{listar\_vacinas}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{listar\_vacinas()}{listar\_vacinas()}}
+{\footnotesize\ttfamily \label{project_8c_ac85aa93d9d8d50924276d0ec905f2546} 
+void listar\+\_\+vacinas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}}]{lista\+\_\+vacina}{, }\item[{int}]{use\+\_\+portuguese}{}\end{DoxyParamCaption})}
+
+
+
+Lists vaccine batches based on user input. 
+
+Lists vaccine batches according to user criteria.
+
+Can list all batches or filter by vaccine name(s)
+
+Displays batches sorted by expiration date and batch ID. Can filter by vaccine name(s) if specified. \Hypertarget{project_8c_acee86cdd7a56dc30d3e932c471ef3e5b}\index{project.c@{project.c}!lote\_existe@{lote\_existe}}
+\index{lote\_existe@{lote\_existe}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{lote\_existe()}{lote\_existe()}}
+{\footnotesize\ttfamily \label{project_8c_acee86cdd7a56dc30d3e932c471ef3e5b} 
+int lote\+\_\+existe (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{lote}{, }\item[{\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}}]{lista\+\_\+vacina}{}\end{DoxyParamCaption})}
+
+
+
+Verifies if a batch with the given ID already exists. 
+
+Verifies if batch ID already exists in system.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lote} & Batch ID to check \\
+\hline
+{\em lista\+\_\+vacina} & Pointer to the first vaccine batch \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if exists, 0 otherwise
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em lote} & Batch ID to check \\
+\hline
+{\em lista\+\_\+vacina} & Head of batch list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if exists, 0 otherwise 
+\end{DoxyReturn}
+\Hypertarget{project_8c_ae00cb020530ccc5191b478f76860363f}\index{project.c@{project.c}!main@{main}}
+\index{main@{main}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{project_8c_ae00cb020530ccc5191b478f76860363f} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argumento\+\_\+num}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argumento\+\_\+val}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Program entry point. 
+
+Initializes system and handles command processing \Hypertarget{project_8c_abc2cc1b8a14bb812a90108cca63f7ffa}\index{project.c@{project.c}!mergelotes@{mergelotes}}
+\index{mergelotes@{mergelotes}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{mergelotes()}{mergelotes()}}
+{\footnotesize\ttfamily \label{project_8c_abc2cc1b8a14bb812a90108cca63f7ffa} 
+void mergelotes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{array\+\_\+lotes}{, }\item[{int}]{e}{, }\item[{int}]{m}{, }\item[{int}]{d}{}\end{DoxyParamCaption})}
+
+
+
+Merge step of mergesort for batch sorting. 
+
+Helper function for the merge\+Sort algorithm \Hypertarget{project_8c_a3ab5a9a6e53cbe3eeb7b13c1c3cb8c62}\index{project.c@{project.c}!mergeSort@{mergeSort}}
+\index{mergeSort@{mergeSort}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{mergeSort()}{mergeSort()}}
+{\footnotesize\ttfamily \label{project_8c_a3ab5a9a6e53cbe3eeb7b13c1c3cb8c62} 
+void merge\+Sort (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{array\+\_\+lote}{, }\item[{int}]{e}{, }\item[{int}]{d}{}\end{DoxyParamCaption})}
+
+
+
+Sorts batches using merge sort algorithm. 
+
+Recursive implementation for performance \Hypertarget{project_8c_a6e024ee0c7302bac01209db01843b6dd}\index{project.c@{project.c}!obter\_dados\_apagar@{obter\_dados\_apagar}}
+\index{obter\_dados\_apagar@{obter\_dados\_apagar}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{obter\_dados\_apagar()}{obter\_dados\_apagar()}}
+{\footnotesize\ttfamily \label{project_8c_a6e024ee0c7302bac01209db01843b6dd} 
+int obter\+\_\+dados\+\_\+apagar (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{nome\+\_\+usuario}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{dia}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{mes}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{ano}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{lote}{}\end{DoxyParamCaption})}
+
+
+
+Parses input for deleting vaccination records. 
+
+Handles three formats\+: just username, username+date, or username+date+batch Deals with both quoted and unquoted usernames
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+\_\+usuario} & Output buffer for username \\
+\hline
+{\em dia} & Output for day component (0 if not provided) \\
+\hline
+{\em mes} & Output for month component (0 if not provided) \\
+\hline
+{\em ano} & Output for year component (0 if not provided) \\
+\hline
+{\em lote} & Output buffer for batch ID (empty if not provided) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if parsing succeeded, 0 on failure 
+\end{DoxyReturn}
+\Hypertarget{project_8c_aa9b14f50bc7ebda073134904874512df}\index{project.c@{project.c}!obter\_dados\_aplicacao@{obter\_dados\_aplicacao}}
+\index{obter\_dados\_aplicacao@{obter\_dados\_aplicacao}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{obter\_dados\_aplicacao()}{obter\_dados\_aplicacao()}}
+{\footnotesize\ttfamily \label{project_8c_aa9b14f50bc7ebda073134904874512df} 
+int obter\+\_\+dados\+\_\+aplicacao (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{nome\+\_\+usuario}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{nome\+\_\+vacina}{}\end{DoxyParamCaption})}
+
+
+
+Parses user input for vaccine application. 
+
+Handles quoted and unquoted user names.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+\_\+usuario} & Output buffer for user name \\
+\hline
+{\em nome\+\_\+vacina} & Output buffer for vaccine name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 on success, 0 on error 
+\end{DoxyReturn}
+\Hypertarget{project_8c_a416ed9ceb8fa3af4be555fdd82febe9f}\index{project.c@{project.c}!obter\_dados\_avanco\_tempo@{obter\_dados\_avanco\_tempo}}
+\index{obter\_dados\_avanco\_tempo@{obter\_dados\_avanco\_tempo}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{obter\_dados\_avanco\_tempo()}{obter\_dados\_avanco\_tempo()}}
+{\footnotesize\ttfamily \label{project_8c_a416ed9ceb8fa3af4be555fdd82febe9f} 
+int obter\+\_\+dados\+\_\+avanco\+\_\+tempo (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{dia}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{mes}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{ano}{}\end{DoxyParamCaption})}
+
+
+
+Parses time advancement input from user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dia} & Output for day \\
+\hline
+{\em mes} & Output for month \\
+\hline
+{\em ano} & Output for year \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if successful, 0 on error 
+\end{DoxyReturn}
+\Hypertarget{project_8c_a683cd967f56c6666b3f96992e2db9cf9}\index{project.c@{project.c}!obter\_dados\_listar\_usuarios@{obter\_dados\_listar\_usuarios}}
+\index{obter\_dados\_listar\_usuarios@{obter\_dados\_listar\_usuarios}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{obter\_dados\_listar\_usuarios()}{obter\_dados\_listar\_usuarios()}}
+{\footnotesize\ttfamily \label{project_8c_a683cd967f56c6666b3f96992e2db9cf9} 
+int obter\+\_\+dados\+\_\+listar\+\_\+usuarios (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{nome\+\_\+usuario}{}\end{DoxyParamCaption})}
+
+
+
+Parses input for listing applications. 
+
+Handles both empty input and username specification Supports quoted and unquoted usernames
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+\_\+usuario} & Output buffer for username (empty if not provided) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if successful, 0 on error 
+\end{DoxyReturn}
+\Hypertarget{project_8c_af877093767d62953ca895e0e0baca607}\index{project.c@{project.c}!obter\_dados\_lote@{obter\_dados\_lote}}
+\index{obter\_dados\_lote@{obter\_dados\_lote}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{obter\_dados\_lote()}{obter\_dados\_lote()}}
+{\footnotesize\ttfamily \label{project_8c_af877093767d62953ca895e0e0baca607} 
+void obter\+\_\+dados\+\_\+lote (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{lista\+\_\+vacinas}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{lote}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{dia}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{mes}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{ano}{, }\item[{int}]{dia\+\_\+atual}{, }\item[{int}]{mes\+\_\+atual}{, }\item[{int}]{ano\+\_\+atual}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+\_\+dosas}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{nome\+\_\+vacina}{, }\item[{int}]{use\+\_\+portugues}{}\end{DoxyParamCaption})}
+
+
+
+Processes user input to create a new vaccine batch. 
+
+Processes batch creation data from user input.
+
+Reads batch details, validates them, and adds to the system
+
+Reads and validates input parameters for creating a new batch. Reports appropriate errors if validation fails. \Hypertarget{project_8c_a209eeb2673108e5272cfe933ee64a152}\index{project.c@{project.c}!obter\_dados\_retirada@{obter\_dados\_retirada}}
+\index{obter\_dados\_retirada@{obter\_dados\_retirada}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{obter\_dados\_retirada()}{obter\_dados\_retirada()}}
+{\footnotesize\ttfamily \label{project_8c_a209eeb2673108e5272cfe933ee64a152} 
+int obter\+\_\+dados\+\_\+retirada (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{lote}{}\end{DoxyParamCaption})}
+
+
+
+Gets batch ID from user input for removal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lote} & Output buffer for batch ID \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if successful, 0 on error 
+\end{DoxyReturn}
+\Hypertarget{project_8c_a248623eda4c1584df94dd43bbd03526d}\index{project.c@{project.c}!ordenar\_aplicacoes@{ordenar\_aplicacoes}}
+\index{ordenar\_aplicacoes@{ordenar\_aplicacoes}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{ordenar\_aplicacoes()}{ordenar\_aplicacoes()}}
+{\footnotesize\ttfamily \label{project_8c_a248623eda4c1584df94dd43bbd03526d} 
+void ordenar\+\_\+aplicacoes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_user}{User}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{array\+\_\+users}{, }\item[{int}]{num\+\_\+users}{}\end{DoxyParamCaption})}
+
+
+
+Sorts applications by date using insertion sort. 
+
+Insertion sort is efficient for small datasets and partially sorted data
+
+
+\begin{DoxyParams}{Parameters}
+{\em array\+\_\+users} & Array of \doxylink{struct_user}{User} pointers to sort \\
+\hline
+{\em num\+\_\+users} & Number of users in array \\
+\hline
+\end{DoxyParams}
+\Hypertarget{project_8c_ae08fe510278be3e3e37be375f0976a13}\index{project.c@{project.c}!remover\_lote@{remover\_lote}}
+\index{remover\_lote@{remover\_lote}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{remover\_lote()}{remover\_lote()}}
+{\footnotesize\ttfamily \label{project_8c_ae08fe510278be3e3e37be375f0976a13} 
+void remover\+\_\+lote (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{lista\+\_\+vacina}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{lote}{}\end{DoxyParamCaption})}
+
+
+
+Removes a batch from the list. 
+
+Handles both head node and interior node cases.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+vacina} & Pointer to head pointer of batch list \\
+\hline
+{\em lote} & Batch ID to remove \\
+\hline
+\end{DoxyParams}
+\Hypertarget{project_8c_a275bdddf6e98d57f7bf3d05e685839d5}\index{project.c@{project.c}!retirar\_disponibilidade@{retirar\_disponibilidade}}
+\index{retirar\_disponibilidade@{retirar\_disponibilidade}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{retirar\_disponibilidade()}{retirar\_disponibilidade()}}
+{\footnotesize\ttfamily \label{project_8c_a275bdddf6e98d57f7bf3d05e685839d5} 
+void retirar\+\_\+disponibilidade (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lote_vacina}{Lote\+Vacina}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{lista\+\_\+vacina}{, }\item[{\mbox{\hyperlink{struct_user}{User}} \texorpdfstring{$\ast$}{*}}]{lista\+\_\+user}{, }\item[{int}]{use\+\_\+portuguese}{}\end{DoxyParamCaption})}
+
+
+
+Removes availability of a specified batch. 
+
+Removes a batch from availability.
+
+Either deletes batch or marks it as fully used
+
+Either completely removes batch or marks it as having no more available doses depending on usage. 

@@ -1,0 +1,239 @@
+\doxysection{user.\+c File Reference}
+\hypertarget{user_8c}{}\label{user_8c}\index{user.c@{user.c}}
+
+
+Implementation of user-\/related functions for vaccine management.  
+
+
+{\ttfamily \#include "{}user.\+h"{}}\newline
+{\ttfamily \#include "{}vacina.\+h"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{user_8c_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\+\_\+\+SIZE}}~65535
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_user}{User}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{user_8c_a795d59c5fb80713f3125cd8fd42aa787}{criar\+\_\+user}} (char \texorpdfstring{$\ast$}{*}nome, char \texorpdfstring{$\ast$}{*}vacina, char \texorpdfstring{$\ast$}{*}lote, int dia, int mes, int ano)
+\begin{DoxyCompactList}\small\item\em Creates a new user vaccination record. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{user_8c_a41c25d5e892fb952642d1977150d3abe}{aplicar\+\_\+vacina}} (\mbox{\hyperlink{struct_user}{User}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}head, char \texorpdfstring{$\ast$}{*}nome, char \texorpdfstring{$\ast$}{*}vacina, char \texorpdfstring{$\ast$}{*}lote, int dia, int mes, int ano)
+\begin{DoxyCompactList}\small\item\em Records a vaccine application for a user. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{user_8c_af34c5e2211256568c9e6ee3901b77619}{free\+\_\+users}} (\mbox{\hyperlink{struct_user}{User}} \texorpdfstring{$\ast$}{*}head)
+\begin{DoxyCompactList}\small\item\em Frees all memory allocated for user records. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_hoje_vax_table}{Hoje\+Vax\+Table}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{user_8c_abe5dcd0d791df1585d3a0d2013f0c220}{criar\+\_\+vax\+\_\+table\+\_\+hoje}} (int day, int month, int year)
+\begin{DoxyCompactList}\small\item\em Creates a new hash table for tracking today\textquotesingle{}s vaccinations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{user_8c_a740a3cf6c497a563cabef6738c2716db}{free\+\_\+hoje\+\_\+vax\+\_\+table}} (\mbox{\hyperlink{struct_hoje_vax_table}{Hoje\+Vax\+Table}} \texorpdfstring{$\ast$}{*}table)
+\begin{DoxyCompactList}\small\item\em Frees all memory allocated for the today\textquotesingle{}s vaccination hash table. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{user_8c_a3b7002e46c217265c87262f9a5bc44d5}{eh\+\_\+vacinado\+\_\+hoje}} (\mbox{\hyperlink{struct_hoje_vax_table}{Hoje\+Vax\+Table}} \texorpdfstring{$\ast$}{*}table, char \texorpdfstring{$\ast$}{*}nome\+\_\+user, char \texorpdfstring{$\ast$}{*}nome\+\_\+vacina)
+\begin{DoxyCompactList}\small\item\em Checks if a user has been vaccinated today with a specific vaccine. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{user_8c_a012c943943a1eb511b806bff637e1b59}{recorde\+\_\+vacinacao\+\_\+hoje}} (\mbox{\hyperlink{struct_hoje_vax_table}{Hoje\+Vax\+Table}} \texorpdfstring{$\ast$}{*}table, char \texorpdfstring{$\ast$}{*}nome\+\_\+user, char \texorpdfstring{$\ast$}{*}nome\+\_\+vacina)
+\begin{DoxyCompactList}\small\item\em Records a vaccination performed today. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{user_8c_aa01f2aabbb4fe37fcb517a4081645ac6}{reset\+\_\+table\+\_\+hoje}} (\mbox{\hyperlink{struct_hoje_vax_table}{Hoje\+Vax\+Table}} \texorpdfstring{$\ast$}{*}table, int day, int month, int year)
+\begin{DoxyCompactList}\small\item\em Resets the hash table if the current date has changed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of user-\/related functions for vaccine management. 
+
+\begin{DoxyAuthor}{Author}
+ist1113656 (Taha Adar Ozsoy) 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{user_8c_a6b20d41d6252e9871430c242cb1a56e7}\index{user.c@{user.c}!BUFFER\_SIZE@{BUFFER\_SIZE}}
+\index{BUFFER\_SIZE@{BUFFER\_SIZE}!user.c@{user.c}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE}{BUFFER\_SIZE}}
+{\footnotesize\ttfamily \label{user_8c_a6b20d41d6252e9871430c242cb1a56e7} 
+\#define BUFFER\+\_\+\+SIZE~65535}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{user_8c_a41c25d5e892fb952642d1977150d3abe}\index{user.c@{user.c}!aplicar\_vacina@{aplicar\_vacina}}
+\index{aplicar\_vacina@{aplicar\_vacina}!user.c@{user.c}}
+\doxysubsubsection{\texorpdfstring{aplicar\_vacina()}{aplicar\_vacina()}}
+{\footnotesize\ttfamily \label{user_8c_a41c25d5e892fb952642d1977150d3abe} 
+void aplicar\+\_\+vacina (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_user}{User}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{head}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{nome}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{vacina}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{lote}{, }\item[{int}]{dia}{, }\item[{int}]{mes}{, }\item[{int}]{ano}{}\end{DoxyParamCaption})}
+
+
+
+Records a vaccine application for a user. 
+
+Creates a new user record and adds it to the beginning of the linked list.
+
+
+\begin{DoxyParams}{Parameters}
+{\em head} & Pointer to the head pointer of the user list \\
+\hline
+{\em nome} & \doxylink{struct_user}{User}\textquotesingle{}s name \\
+\hline
+{\em vacina} & Name of the vaccine \\
+\hline
+{\em lote} & Batch identifier used \\
+\hline
+{\em dia} & Day of application \\
+\hline
+{\em mes} & Month of application \\
+\hline
+{\em ano} & Year of application \\
+\hline
+\end{DoxyParams}
+\Hypertarget{user_8c_a795d59c5fb80713f3125cd8fd42aa787}\index{user.c@{user.c}!criar\_user@{criar\_user}}
+\index{criar\_user@{criar\_user}!user.c@{user.c}}
+\doxysubsubsection{\texorpdfstring{criar\_user()}{criar\_user()}}
+{\footnotesize\ttfamily \label{user_8c_a795d59c5fb80713f3125cd8fd42aa787} 
+\mbox{\hyperlink{struct_user}{User}} \texorpdfstring{$\ast$}{*} criar\+\_\+user (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{nome}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{vacina}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{lote}{, }\item[{int}]{dia}{, }\item[{int}]{mes}{, }\item[{int}]{ano}{}\end{DoxyParamCaption})}
+
+
+
+Creates a new user vaccination record. 
+
+Allocates memory for a user record and copies the provided information.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome} & \doxylink{struct_user}{User}\textquotesingle{}s name \\
+\hline
+{\em vacina} & Name of the vaccine \\
+\hline
+{\em lote} & Batch identifier used \\
+\hline
+{\em dia} & Day of application \\
+\hline
+{\em mes} & Month of application \\
+\hline
+{\em ano} & Year of application \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the newly created user record 
+\end{DoxyReturn}
+\Hypertarget{user_8c_abe5dcd0d791df1585d3a0d2013f0c220}\index{user.c@{user.c}!criar\_vax\_table\_hoje@{criar\_vax\_table\_hoje}}
+\index{criar\_vax\_table\_hoje@{criar\_vax\_table\_hoje}!user.c@{user.c}}
+\doxysubsubsection{\texorpdfstring{criar\_vax\_table\_hoje()}{criar\_vax\_table\_hoje()}}
+{\footnotesize\ttfamily \label{user_8c_abe5dcd0d791df1585d3a0d2013f0c220} 
+\mbox{\hyperlink{struct_hoje_vax_table}{Hoje\+Vax\+Table}} \texorpdfstring{$\ast$}{*} criar\+\_\+vax\+\_\+table\+\_\+hoje (\begin{DoxyParamCaption}\item[{int}]{day}{, }\item[{int}]{month}{, }\item[{int}]{year}{}\end{DoxyParamCaption})}
+
+
+
+Creates a new hash table for tracking today\textquotesingle{}s vaccinations. 
+
+Initializes the hash table with empty buckets and the current date.
+
+
+\begin{DoxyParams}{Parameters}
+{\em day} & Current day \\
+\hline
+{\em month} & Current month \\
+\hline
+{\em year} & Current year \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the newly created hash table 
+\end{DoxyReturn}
+\Hypertarget{user_8c_a3b7002e46c217265c87262f9a5bc44d5}\index{user.c@{user.c}!eh\_vacinado\_hoje@{eh\_vacinado\_hoje}}
+\index{eh\_vacinado\_hoje@{eh\_vacinado\_hoje}!user.c@{user.c}}
+\doxysubsubsection{\texorpdfstring{eh\_vacinado\_hoje()}{eh\_vacinado\_hoje()}}
+{\footnotesize\ttfamily \label{user_8c_a3b7002e46c217265c87262f9a5bc44d5} 
+int eh\+\_\+vacinado\+\_\+hoje (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_hoje_vax_table}{Hoje\+Vax\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{nome\+\_\+user}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{nome\+\_\+vacina}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a user has been vaccinated today with a specific vaccine. 
+
+Searches the hash table for a record matching the user-\/vaccine pair.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Pointer to the hash table \\
+\hline
+{\em nome\+\_\+user} & \doxylink{struct_user}{User}\textquotesingle{}s name \\
+\hline
+{\em nome\+\_\+vacina} & Name of the vaccine \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the user was vaccinated today with the given vaccine, 0 otherwise 
+\end{DoxyReturn}
+\Hypertarget{user_8c_a740a3cf6c497a563cabef6738c2716db}\index{user.c@{user.c}!free\_hoje\_vax\_table@{free\_hoje\_vax\_table}}
+\index{free\_hoje\_vax\_table@{free\_hoje\_vax\_table}!user.c@{user.c}}
+\doxysubsubsection{\texorpdfstring{free\_hoje\_vax\_table()}{free\_hoje\_vax\_table()}}
+{\footnotesize\ttfamily \label{user_8c_a740a3cf6c497a563cabef6738c2716db} 
+void free\+\_\+hoje\+\_\+vax\+\_\+table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_hoje_vax_table}{Hoje\+Vax\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{}\end{DoxyParamCaption})}
+
+
+
+Frees all memory allocated for the today\textquotesingle{}s vaccination hash table. 
+
+Releases memory for all records in each bucket and the table itself.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Pointer to the hash table \\
+\hline
+\end{DoxyParams}
+\Hypertarget{user_8c_af34c5e2211256568c9e6ee3901b77619}\index{user.c@{user.c}!free\_users@{free\_users}}
+\index{free\_users@{free\_users}!user.c@{user.c}}
+\doxysubsubsection{\texorpdfstring{free\_users()}{free\_users()}}
+{\footnotesize\ttfamily \label{user_8c_af34c5e2211256568c9e6ee3901b77619} 
+void free\+\_\+users (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_user}{User}} \texorpdfstring{$\ast$}{*}}]{head}{}\end{DoxyParamCaption})}
+
+
+
+Frees all memory allocated for user records. 
+
+Traverses the user linked list and releases memory for each node.
+
+
+\begin{DoxyParams}{Parameters}
+{\em head} & Pointer to the head of the user list \\
+\hline
+\end{DoxyParams}
+\Hypertarget{user_8c_a012c943943a1eb511b806bff637e1b59}\index{user.c@{user.c}!recorde\_vacinacao\_hoje@{recorde\_vacinacao\_hoje}}
+\index{recorde\_vacinacao\_hoje@{recorde\_vacinacao\_hoje}!user.c@{user.c}}
+\doxysubsubsection{\texorpdfstring{recorde\_vacinacao\_hoje()}{recorde\_vacinacao\_hoje()}}
+{\footnotesize\ttfamily \label{user_8c_a012c943943a1eb511b806bff637e1b59} 
+void recorde\+\_\+vacinacao\+\_\+hoje (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_hoje_vax_table}{Hoje\+Vax\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{nome\+\_\+user}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{nome\+\_\+vacina}{}\end{DoxyParamCaption})}
+
+
+
+Records a vaccination performed today. 
+
+Creates a new record in the hash table for the user-\/vaccine pair.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Pointer to the hash table \\
+\hline
+{\em nome\+\_\+user} & \doxylink{struct_user}{User}\textquotesingle{}s name \\
+\hline
+{\em nome\+\_\+vacina} & Name of the vaccine \\
+\hline
+\end{DoxyParams}
+\Hypertarget{user_8c_aa01f2aabbb4fe37fcb517a4081645ac6}\index{user.c@{user.c}!reset\_table\_hoje@{reset\_table\_hoje}}
+\index{reset\_table\_hoje@{reset\_table\_hoje}!user.c@{user.c}}
+\doxysubsubsection{\texorpdfstring{reset\_table\_hoje()}{reset\_table\_hoje()}}
+{\footnotesize\ttfamily \label{user_8c_aa01f2aabbb4fe37fcb517a4081645ac6} 
+void reset\+\_\+table\+\_\+hoje (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_hoje_vax_table}{Hoje\+Vax\+Table}} \texorpdfstring{$\ast$}{*}}]{table}{, }\item[{int}]{day}{, }\item[{int}]{month}{, }\item[{int}]{year}{}\end{DoxyParamCaption})}
+
+
+
+Resets the hash table if the current date has changed. 
+
+Clears all records in the hash table and updates the current date.
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & Pointer to the hash table \\
+\hline
+{\em day} & New current day \\
+\hline
+{\em month} & New current month \\
+\hline
+{\em year} & New current year \\
+\hline
+\end{DoxyParams}

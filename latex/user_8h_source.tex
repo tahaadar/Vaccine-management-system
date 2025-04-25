@@ -1,0 +1,60 @@
+\doxysection{user.\+h}
+\hypertarget{user_8h_source}{}\label{user_8h_source}\mbox{\hyperlink{user_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ USER\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ USER\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ BUFFER\_SIZE\ 65535\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ HASH\_SIZE\ 1009\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ MAX\_NOME\ 51\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ MAX\_NOME\_LOTE\ 21\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <ctype.h>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_user}{User}}\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{struct_user_a3302ce05b8a596544a28915a7cff441c}{nome}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_user_a81af26fed666f475374e6c55121f8713}{nome\_vacina}}[\mbox{\hyperlink{user_8h_a650a929b45480c0875d8c814f442b6ac}{MAX\_NOME}}];\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_user_a1bfb3a3dc59dc6d03ccdc3c801462178}{lote\_usado}}[\mbox{\hyperlink{user_8h_ae1a6a6b50fa6fc7bbdcdcef1819dc370}{MAX\_NOME\_LOTE}}];\ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_user_ab608b7349f453e8df7d7169f87f7d661}{dia\_de\_applicacao}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_user_a1e578c6a1d024fb26c9753a4d24ea416}{mes\_de\_aplicacao}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_user_ab6b832e062e595bd2dadaf6f2fd8135c}{ano\_de\_aplicacao}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_user_aea85e96dc18900bab6f4c6c463c98515}{data\_aplicacao\_int}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_user}{User}}*\ \mbox{\hyperlink{struct_user_ae83adce10c90cd821090c855f2c46369}{next}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00031\ \}\ \mbox{\hyperlink{struct_user}{User}};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00043\ \mbox{\hyperlink{struct_user}{User}}*\ \mbox{\hyperlink{user_8h_a795d59c5fb80713f3125cd8fd42aa787}{criar\_user}}(\textcolor{keywordtype}{char}*\ \mbox{\hyperlink{struct_user_a3302ce05b8a596544a28915a7cff441c}{nome}},\ \textcolor{keywordtype}{char}*\ vacina,\ \textcolor{keywordtype}{char}*\ lote,\ \textcolor{keywordtype}{int}\ dia,\ \textcolor{keywordtype}{int}\ mes,\ \textcolor{keywordtype}{int}\ ano);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{user_8h_a41c25d5e892fb952642d1977150d3abe}{aplicar\_vacina}}(\mbox{\hyperlink{struct_user}{User}}**\ head,\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{struct_user_a3302ce05b8a596544a28915a7cff441c}{nome}},\ \textcolor{keywordtype}{char}*\ vacina,\ \textcolor{keywordtype}{char}*\ lote,\ \textcolor{keywordtype}{int}\ dia,\ \textcolor{keywordtype}{int}\ mes,\ \textcolor{keywordtype}{int}\ ano);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{user_8h_af34c5e2211256568c9e6ee3901b77619}{free\_users}}(\mbox{\hyperlink{struct_user}{User}}*\ head);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00066\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_vax_hoje}{VaxHoje}}\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{struct_vax_hoje_a966b3da4b80e968bea2a2cbbf8d4674e}{nome\_user}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{struct_vax_hoje_a34372f195062e6773c0e50c11d735f23}{nome\_vacina}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_vax_hoje}{VaxHoje}}*\ \mbox{\hyperlink{struct_vax_hoje_ac25e86072a3db8132521f95793568ef2}{next}};\ \ \ \ \ }
+\DoxyCodeLine{00070\ \}\ \mbox{\hyperlink{struct_vax_hoje}{VaxHoje}};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{struct_vax_hoje}{VaxHoje}}*\ \mbox{\hyperlink{struct_hoje_vax_table_af13d9b3d514af5d4f13a1cf44d2a3775}{table}}[\mbox{\hyperlink{user_8h_ad6074dd11ab3c97c8135c43aab03ae95}{HASH\_SIZE}}];}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_hoje_vax_table_a6ee27d81086e3971a5b9008ba8e1f3c8}{current\_day}};}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_hoje_vax_table_a801e674ea811903931e8bfafa646f26d}{current\_month}};}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_hoje_vax_table_a79c5c2b33c4f841392163c706379d0ab}{current\_year}};}
+\DoxyCodeLine{00080\ \}\ \mbox{\hyperlink{struct_hoje_vax_table}{HojeVaxTable}};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00089\ \mbox{\hyperlink{struct_hoje_vax_table}{HojeVaxTable}}*\ \mbox{\hyperlink{user_8h_abe5dcd0d791df1585d3a0d2013f0c220}{criar\_vax\_table\_hoje}}(\textcolor{keywordtype}{int}\ day,\ \textcolor{keywordtype}{int}\ month,\ \textcolor{keywordtype}{int}\ year);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00095\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{user_8h_a740a3cf6c497a563cabef6738c2716db}{free\_hoje\_vax\_table}}(\mbox{\hyperlink{struct_hoje_vax_table}{HojeVaxTable}}*\ table);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00104\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{user_8h_a3b7002e46c217265c87262f9a5bc44d5}{eh\_vacinado\_hoje}}(\mbox{\hyperlink{struct_hoje_vax_table}{HojeVaxTable}}*\ table,\ \textcolor{keywordtype}{char}*\ nome\_user,\ \textcolor{keywordtype}{char}*\ nome\_vacina);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00112\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{user_8h_a012c943943a1eb511b806bff637e1b59}{recorde\_vacinacao\_hoje}}(\mbox{\hyperlink{struct_hoje_vax_table}{HojeVaxTable}}*\ table,\ \textcolor{keywordtype}{char}*\ nome\_user,\ \textcolor{keywordtype}{char}*\ nome\_vacina);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00121\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{user_8h_aa01f2aabbb4fe37fcb517a4081645ac6}{reset\_table\_hoje}}(\mbox{\hyperlink{struct_hoje_vax_table}{HojeVaxTable}}*\ table,\ \textcolor{keywordtype}{int}\ day,\ \textcolor{keywordtype}{int}\ month,\ \textcolor{keywordtype}{int}\ year);}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
